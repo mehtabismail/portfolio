@@ -5,6 +5,7 @@ import { LuGraduationCap } from "react-icons/lu";
 import corpcommentImg from "@/public/corpcomment.png";
 import rmtdevImg from "@/public/rmtdev.png";
 import wordanalyticsImg from "@/public/wordanalytics.png";
+import { Locum, Mish, WhoU } from "@/public";
 
 export const links = [
   {
@@ -35,73 +36,75 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+    title: "Bachelor of Science in Software Engineering",
+    location: "University of Lahore",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
+      "Specialization courses: OOP, Design Pattern, Data Structure & Algorithm, HCI, Object Oriented Software Engineering and Mobile Application Development in Flutter.",
     icon: React.createElement(LuGraduationCap),
-    date: "2019",
+    date: "2017-2021",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    title: "React Native Developer",
+    location: "Tribex Technologies",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
+      "I started my career as an intern and after 3 months of probation, I started working as a React Native developer for 2 years and 7 months. I also upskilled to the full stack.",
     icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2021",
+    date: "Sept 2019 - Mar 2022",
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
+    title: "Front-End | React-Native Developer",
+    location: "Optimusfox",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
+      "I worked for 7 months in this company and During my dynamic 7-month tenure at optimusfox, I played a pivotal role in driving the company's digital presence to new heights.",
     icon: React.createElement(FaReact),
-    date: "2021 - present",
+    date: "Apr 2022 - Oct 2022",
+  },
+  {
+    title: "Sr. React-Native | Team Lead",
+    location: "OutsourceNZ",
+    description:
+      "Currently i am working in this company as front-end team lead. I have honed my skills in front-end development, and cultivated a deep appreciation for the importance of collaboration in achieving project success.",
+    icon: React.createElement(FaReact),
+    date: "Oct 2022 - present",
   },
 ] as const;
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "Mish (Roadie)",
     description:
-      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
-    imageUrl: corpcommentImg,
+      "Mish is Aotearoa New Zealand’s latest community-based travel network enabling Kiwis nationwide to share rides across our beautiful country.",
+    tags: ["React Native", "Typescript", "Toolkit", "RTK Query"],
+    imageUrl: Mish,
   },
   {
-    title: "rmtDev",
+    title: "Locum Bridge",
     description:
-      "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
-    imageUrl: rmtdevImg,
+      "Need a task done quickly and professionally? Look no further! The Locum Bridge app is here to provide top-notch services tailored to your needs.",
+    tags: ["React Native", "TypeScript", "View.js", "Tailwind", "Redux"],
+    imageUrl: Locum,
   },
   {
-    title: "Word Analytics",
+    title: "Who U",
     description:
-      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
-    imageUrl: wordanalyticsImg,
+      "Who U is a new mobile app that aims to connect users with like-minded individuals in their area! Our app allows users to sign up and log in to see a list of registered users within a certain radius of the user’s location.",
+    tags: ["React Native", "Javascript", "Redux"],
+    imageUrl: WhoU,
   },
 ] as const;
 
 export const skillsData = [
-  "HTML",
-  "CSS",
   "JavaScript",
-  "TypeScript",
+  "React Native",
   "React",
-  "Next.js",
-  "Node.js",
+  "Redux-Toolkit",
+  "TypeScript",
+  "WebRTC",
+  "Blockchain",
+  "Socket",
   "Git",
   "Tailwind",
-  "Prisma",
-  "MongoDB",
-  "Redux",
-  "GraphQL",
-  "Apollo",
-  "Express",
-  "PostgreSQL",
-  "Python",
-  "Django",
-  "Framer Motion",
+  "Data Structure",
+  "Algorithm",
+  "Design Pattern",
 ] as const;
