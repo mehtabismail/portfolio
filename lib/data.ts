@@ -87,7 +87,7 @@ export const projectsData = [
   {
     title: "Who U",
     description:
-      "Who U is a new mobile app that aims to connect users with like-minded individuals in their area! Our app allows users to sign up and log in to see a list of registered users within a certain radius of the user’s location.",
+      "Who U is a new mobile app that aims to connect users with like-minded individuals in their area! Our app allows users to see a list of registered users within a certain radius of the user’s location.",
     tags: ["React Native", "Javascript", "Redux"],
     imageUrl: WhoU,
   },
