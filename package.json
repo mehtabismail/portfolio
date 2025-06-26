@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "seed": "node ./firebase/seeder.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -18,6 +19,7 @@
     "clsx": "^1.2.1",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
+    "firebase-admin": "^13.4.0",
     "framer-motion": "^10.12.17",
     "next": "13.4.8",
     "postcss": "8.4.24",
