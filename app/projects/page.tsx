@@ -41,7 +41,7 @@ const ComponentName = () => {
         </h1>
         <div className='flex flex-wrap m-2'>
           {projects.length > 0 ? (
-            projects?.map((item, index) => (
+            projects?.map((item: any) => (
               <Link
                 className='w-1/5'
                 key={item?.info?.id}
