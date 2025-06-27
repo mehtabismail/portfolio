@@ -36,20 +36,12 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Bachelor of Science in Software Engineering",
-    location: "University of Lahore",
+    title: "Sr. React-Native | Team Lead",
+    location: "OutsourceNZ",
     description:
-      "Specialization courses: OOP, Design Pattern, Data Structure & Algorithm, HCI, Object Oriented Software Engineering and Mobile Application Development in Flutter.",
-    icon: React.createElement(LuGraduationCap),
-    date: "2017-2021",
-  },
-  {
-    title: "React Native Developer",
-    location: "Tribex Technologies",
-    description:
-      "I started my career as an intern and after 3 months of probation, I started working as a React Native developer for 2 years and 7 months. I also upskilled to the full stack.",
-    icon: React.createElement(CgWorkAlt),
-    date: "Sept 2019 - Mar 2022",
+      "Currently i am working in this company as front-end team lead. I have honed my skills in front-end development, and cultivated a deep appreciation for the importance of collaboration in achieving project success.",
+    icon: React.createElement(FaReact),
+    date: "Oct 2022 - Jun 2025",
   },
   {
     title: "Front-End | React-Native Developer",
@@ -60,12 +52,20 @@ export const experiencesData = [
     date: "Apr 2022 - Oct 2022",
   },
   {
-    title: "Sr. React-Native | Team Lead",
-    location: "OutsourceNZ",
+    title: "React Native Developer",
+    location: "Tribex Technologies",
     description:
-      "Currently i am working in this company as front-end team lead. I have honed my skills in front-end development, and cultivated a deep appreciation for the importance of collaboration in achieving project success.",
-    icon: React.createElement(FaReact),
-    date: "Oct 2022 - present",
+      "I started my career as an intern and after 3 months of probation, I started working as a React Native developer for 2 years and 7 months. I also upskilled to the full stack.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Sept 2019 - Mar 2022",
+  },
+  {
+    title: "Bachelor of Science in Software Engineering",
+    location: "University of Lahore",
+    description:
+      "I graduated with a CGPA of 3.4 and completed specialized courses i.e OOP, Design Patterns, DSA, Object-Oriented Software Engineering, HCI, and Mobile Application Development using Flutter.",
+    icon: React.createElement(LuGraduationCap),
+    date: "2017-2021",
   },
 ] as const;
 
