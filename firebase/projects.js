@@ -5,7 +5,7 @@ export const projectsList = [
       "TypeScripts, React Native",
       "Redux Toolkit, RTK Query, CarJam Api's",
     ],
-    description: `iSQROLL, the online marketplace designed for Kiwi's, by Kiwis.\nA community platform that provides a safe buying and selling environment with easy communication between traders.\nWe believe businesses and individual buyers and sellers are important contributors to the economic health of New Zealand, and that buying and selling should be accessible.\nExplore the new world of trading goods, scroll through to grab your new.`,
+    description: `ISQROLL, the online marketplace designed for Kiwi's, by Kiwis.\nA community platform that provides a safe buying and selling environment with easy communication between traders.\nWe believe businesses and individual buyers and sellers are important contributors to the economic health of New Zealand, and that buying and selling should be accessible.\nExplore the new world of trading goods, scroll through to grab your new.`,
     android_app_link:
       "https://play.google.com/store/apps/details?id=com.isqroll&hl=en",
     ios_app_link: "https://apps.apple.com/pk/app/isqroll/id6479675690",
