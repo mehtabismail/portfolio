@@ -34,31 +34,50 @@ const ComponentName = () => {
   }, []);
 
   return (
-    <div className='body w-full'>
-      <div className='m-4 p-4 items-center'>
-        <h1 className='mx-4 font-semibold text-2xl text-grey-900'>
-          List of Projects
-        </h1>
-        <div className='flex flex-wrap m-2'>
-          {projects.length > 0 ? (
-            projects?.map((item: any) => (
-              <Link
-                className='w-1/5'
-                key={item?.info?.id}
-                href='#contact'
-                onClick={() => {
-                  setActiveSection("Contact");
-                  setTimeOfLastClick(Date.now());
-                }}
-              >
-                <ProjectCard project={item} />
-              </Link>
-            ))
-          ) : (
-            <Shimmer />
-          )}
-        </div>
-      </div>
+    // <div className='body w-full'>
+    //   <div className='m-4 p-4 items-center'>
+    //     <h1 className='mx-4 font-semibold text-2xl text-grey-900'>
+    //       List of Projects
+    //     </h1>
+    //     <div className='flex flex-wrap m-2'>
+    //       {projects.length > 0 ? (
+    //         projects?.map((item: any) => (
+    //           <Link
+    //             className='w-1/5'
+    //             key={item?.info?.id}
+    //             href='#contact'
+    //             onClick={() => {
+    //               setActiveSection("Contact");
+    //               setTimeOfLastClick(Date.now());
+    //             }}
+    //           >
+    //             <ProjectCard project={item} />
+    //           </Link>
+    //         ))
+    //       ) : (
+    //         <Shimmer />
+    //       )}
+    //     </div>
+    //   </div>
+    // </div>
+    <div className='flex flex-wrap m-2'>
+      {projects.length > 0 ? (
+        projects.map((item: any) => (
+          <Link
+            key={item?.info?.id}
+            href='#contact'
+            onClick={() => {
+              setActiveSection("Contact");
+              setTimeOfLastClick(Date.now());
+            }}
+            className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2'
+          >
+            <ProjectCard project={item} />
+          </Link>
+        ))
+      ) : (
+        <Shimmer />
+      )}
     </div>
   );
 };

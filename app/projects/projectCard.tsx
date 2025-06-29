@@ -26,7 +26,7 @@ const ProjectCard = ({ project }: any) => {
         }}
         className='group mb-3 sm:mb-8 last:mb-0'
       >
-        <section className='m-2 p-4 bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20'>
+        <section className='m-2 p-4 bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20 min-h-[250px]'>
           <Image
             src={
               thumbnail ||
@@ -35,7 +35,7 @@ const ProjectCard = ({ project }: any) => {
             alt='Project I worked on'
             quality={100}
             fill
-            className='absolute hidden sm:block top-8 -right-2 w-[18.25rem] rounded-t-lg shadow-2xl
+            className='absolute top-8 -right-2 w-[18.25rem] h-40 object-cover rounded-t-lg shadow-2xl
               transition 
               group-hover:scale-[1.04]
               group-hover:-translate-x-6
