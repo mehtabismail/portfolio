@@ -14,6 +14,23 @@ export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
+  const getTimePeriod = () => {
+    const startDate = new Date("2019-01-01");
+    const currentDate = new Date();
+
+    let years = currentDate.getFullYear() - startDate.getFullYear();
+    let months = currentDate.getMonth() - startDate.getMonth();
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    return { years, months };
+  };
+
+  const { years, months } = getTimePeriod();
+
   return (
     <section
       ref={ref}
@@ -71,11 +88,14 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className='font-bold'>Hello, I'm Mehtab.</span> I'm a{" "}
-        <span className='font-bold'>Senior React-Native developer</span> with{" "}
+        <span className='font-bold'>Hello, I'm Mehtab.</span> I'm a skilled
+        Software Engineer with over {years} years of experience in the IT
+        industry. I create full-stack Web & mobile apps that cater to the needs
+        of diverse clients.
+        {/* <span className='font-bold'>Senior React-Native developer</span> with{" "}
         <span className='font-bold'>5 years</span> of experience. I enjoy
         building fully responsive <span className='italic'>sites & apps</span>.
-        My focus is <span className='underline'>React-Native & React.js</span>.
+        My focus is <span className='underline'>React-Native & React.js</span>. */}
       </motion.h1>
 
       <motion.div
