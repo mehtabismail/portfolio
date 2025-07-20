@@ -1,5 +1,51 @@
 export const projectsList = [
   {
+    id: "12",
+    name: "SafetyCheck NZ",
+    tech: [
+      "JavaScript",
+      "React Native",
+      "Node & Express",
+      "Tailwind CSS",
+      "CarJam Api's",
+      "Branch.io",
+      "Redux Toolkit",
+      "RTK-Query",
+    ],
+    description: `At SafetyCheck, we believe that an excellent health and safety system should be accessible to everyone in the construction industry. Our mission is to simplify workplace safety while providing the most cost-effective system on the market—ever.\n\nSafetyCheck is specifically built for small and medium businesses in the construction industry, offering a faster, easier, and more effective way to manage safety compliance—at a fraction of the cost of other safety management systems.\n\nWhether you're a sole trader or managing multiple worksites, SafetyCheck delivers a streamlined solution for safety management. From real-time worksite monitoring and seamless site inductions to contractor management and customized risk register templates, our platform guides you through compliance while helping you manage common risks and controls.\n\nProudly designed for the New Zealand construction industry, we aim to foster collaboration between businesses, drive innovation in workplace safety, and ensure that every trade—whether you're a builder, electrician, or landscaper—has access to an exceptional safety system without breaking the bank.`,
+    features: [
+      "Enables tracking and management of site safety as work happens.",
+      "Simplifies onboarding and safety training for workers and contractors.",
+      "Keeps contractor information and compliance organized in one place.",
+      "Offers pre-built templates to document and manage risks and safety controls.",
+      "Built to meet the unique needs and compliance standards of the New Zealand construction sector.",
+    ],
+    web_app_link:
+      "https://safetycheck-stage-fe-efgqhdb5euckf3eb.australiasoutheast-01.azurewebsites.net/",
+    ios_app_link:
+      "https://apps.apple.com/nz/app/safetycheck-nz/id6621188253?platform=iphone",
+    android_app_link:
+      "https://play.google.com/store/apps/details?id=com.outsourcenz.safetycheck",
+    thumbnail:
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301302/projects/safetyCheck/Splash_1_c8xsmk.png",
+    images: [
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301302/projects/safetyCheck/Splash_1_c8xsmk.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301314/projects/safetyCheck/supplier-signup_1_o100rh.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301310/projects/safetyCheck/Signup---Buyer_1_uwqv42.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301287/projects/safetyCheck/Dashboard---Buyer_1_kc9kgn.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301292/projects/safetyCheck/Orders-buyer_1_u0lz0x.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301289/projects/safetyCheck/Product---Buyer_1_mfut9x.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301288/projects/safetyCheck/cart-buyer_1_gq9qjd.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301314/projects/safetyCheck/Support-ticket--Buyer_zzmsgv.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1752301314/projects/safetyCheck/Order-confirmation---Buyer_1_cuhi93.png",
+    ],
+    role: "Full Stack Developer",
+    company: "Self",
+    status: "Completed",
+    live: true,
+    type: "Mobile & Web",
+  },
+  {
     id: "1",
     name: "ISQROLL",
     tech: [
@@ -265,6 +311,40 @@ export const projectsList = [
     role: "Full Stack Developer",
     company: "Self",
     status: "Development",
+    live: true,
+    type: "Web App",
+  },
+  {
+    id: "11",
+    name: "A Developer-Only Connection Platform",
+    tech: [
+      "JavaScript, React & Vite",
+      "Node & Express",
+      "Tailwind CSS",
+      "Daisy UI",
+      "AWS SES",
+      "AWS EC2",
+      "NGINX",
+    ],
+    description: `DevTinder is a web application that brings the swipe-and-connect experience of Tinder to the developer community. Built exclusively for developers, it enables users to discover and connect with like-minded professionals through a clean and intuitive interface.\n\nThis project showcases full-stack development skills, including authentication, API design, email communication, and cloud deployment.`,
+    features: [
+      "Real-time updates and smooth UI transitions",
+      "Swipe-style interaction tailored for tech networking",
+      "Developer-focused connection system with request and approval flow",
+    ],
+    web_app_link: "http://51.20.92.222/",
+    github_link: "https://github.com/mehtabismail/devTinder-web",
+    thumbnail:
+      "https://res.cloudinary.com/mehtab/image/upload/v1751967419/projects/devTinder/devTinder_g1ld4l.png",
+    images: [
+      "https://res.cloudinary.com/mehtab/image/upload/v1751966857/projects/devTinder/Screenshot_2025-07-08_at_2.18.45_PM_ml82hm.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1751966852/projects/devTinder/Screenshot_2025-07-08_at_2.19.02_PM_vp9n4q.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1751966853/projects/devTinder/Screenshot_2025-07-08_at_2.19.24_PM_e6tpx0.png",
+      "https://res.cloudinary.com/mehtab/image/upload/v1751966851/projects/devTinder/Screenshot_2025-07-08_at_2.19.13_PM_olch1e.png",
+    ],
+    role: "Full Stack Developer",
+    company: "Self",
+    status: "Completed",
     live: true,
     type: "Web App",
   },
