@@ -14,7 +14,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
-const GA_ID = process.env.GA_ID;
+const GA_ID = "G-P7GHB6ZPM4";
 
 export default function RootLayout({
   children,
