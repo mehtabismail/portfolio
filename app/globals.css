@@ -1,29 +1,358 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 
+ * Next.js Portfolio Global Overrides
+ * These override the original CSS to work with window scrolling instead of Locomotive Scroll
+ */
 
-html {
-  --line-color: #e5e7eb;
+:root {
+  --vh: 1vh;
 }
 
-html.dark {
-  --line-color: rgba(255, 255, 255, 0.2);
+/* Override the fixed positioning from the original CSS to allow normal scroll */
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  height: auto !important;
+  scroll-behavior: smooth;
 }
 
-.borderBlack {
-  @apply border border-black/10;
+main.main {
+  position: relative !important;
+  height: auto !important;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: visible !important;
+  transform: none !important;
 }
 
-.shimmer-container {
+.main-wrap {
+  position: relative !important;
+  width: 100%;
+  min-height: 100vh;
+  height: auto !important;
+  transform: none !important;
+  overflow: visible !important;
+}
+
+/* Ensure data-scroll-section elements are visible */
+[data-scroll-section] {
+  position: relative !important;
+  transform: none !important;
+}
+
+/* Loading screen - ensure it's above everything */
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.loading-screen {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  pointer-events: all;
+}
+
+.loading-words {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+}
+
+.loading-words h2 {
+  display: none;
+  text-align: center;
+}
+
+.loading-words h2.active {
+  display: block;
+}
+
+.loading-words h2.home-active,
+.loading-words h2.home-active-first,
+.loading-words h2.home-active-last {
+  display: none;
+}
+
+/* Fix for locomotive scroll css overriding height */
+html.has-scroll-smooth,
+html.has-scroll-init {
+  overflow: auto !important;
+}
+
+html.has-scroll-smooth body,
+html.has-scroll-init body {
+  overflow: auto !important;
+}
+
+/* Ensure scroll container doesn't use fixed positioning */
+[data-scroll-container] {
+  position: relative !important;
+  height: auto !important;
+  min-height: 100vh;
+  overflow: visible !important;
+}
+
+/* Fix hover image container positioning */
+.mouse-pos-list-image {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+}
+
+.mouse-pos-list-image.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mouse-pos-list-btn,
+.mouse-pos-list-span {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.mouse-pos-list-btn.active,
+.mouse-pos-list-span.active {
+  opacity: 1;
+}
+
+/* Ensure horizontal items scroll properly */
+.horizontal-items .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
-.shimmer-card {
-  width: 269px;
-  height: 300px;
-  border-radius: 20px;
-  background-color: lightgray;
-  margin-bottom: 15px;
-  margin-right: 15px;
+/* Fix name wrap for horizontal scrolling */
+.big-name {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.big-name .name-h1 {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.big-name .name-wrap {
+  display: inline-flex;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Ensure footer is visible */
+.footer-wrap,
+.footer-footer-wrap {
+  position: relative !important;
+}
+
+footer.footer {
+  position: relative !important;
+}
+
+/* Smooth scrolling with Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+  overflow: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/*
+ * Button fill: full-area hover (not oval).
+ * Original .btn-fill uses width 150%, height 200%, border-radius 50% which shows an oval.
+ * Override so the fill covers the entire button shape.
+ */
+.btn .btn-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(0, -100%, 0);
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* Pill / normal buttons: match pill radius so fill covers whole button */
+.btn-normal .btn-click .btn-fill {
+  border-radius: 2.125em;
+}
+
+/* Round buttons (More work, etc.): full circle fill */
+.btn-round .btn-click .btn-fill {
+  border-radius: 50%;
+}
+
+/* Hamburger: circular button, circular fill */
+.btn-hamburger .btn-fill {
+  border-radius: 50%;
+}
+
+.btn .btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* Span lines animation */
+.span-line {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.span-line-inner {
+  display: inline-block;
+}
+
+/* Float image wrap for hover preview */
+.float-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mouse-pos-list-image-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Fix for fixed nav */
+.fixed-nav {
+  z-index: 999;
+}
+
+.fixed-nav-back {
+  z-index: 998;
+}
+
+/* Hamburger: hidden at top of page, show only after scroll or when menu is open */
+.btn-hamburger {
+  z-index: 1000;
+  transform: translateY(0%) scale(0) rotate(0.001deg);
+  transition: transform 0.4s cubic-bezier(0.36, 0, 0.66, 0);
+}
+main.scrolled .btn-hamburger,
+main .btn-hamburger.active {
+  transform: translateY(0%) scale(1) rotate(0.001deg);
+  transition: transform 0.4s cubic-bezier(0.34, 1.5, 0.64, 1);
+}
+
+/* Work items hover state */
+.work-items li {
+  position: relative;
+}
+
+.work-items li .row {
+  cursor: pointer;
+}
+
+/* Work tiles */
+.work-tiles li {
+  position: relative;
+}
+
+.single-tile-wrap a {
+  cursor: pointer;
+}
+
+/* Lazy load background image */
+[data-bg] {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*
+ * Nav credit strip: client wrapper (© + .cbd) so hover covers whole row. Hover drops "Code by"
+ * in React; neutralize theme .dennis translate on link:hover. .btn-text has pointer-events: none.
+ */
+main.main .btn-link.btn-left-top .nav-credit-strip {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  pointer-events: auto;
+}
+
+main.main .btn-link.btn-left-top .nav-credit-strip .credit {
+  flex: 0 0 auto;
+}
+
+main.main .btn-link.btn-left-top .cbd.nav-credit-root {
+  overflow: visible;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0;
+  max-width: none;
+  flex: 0 0 auto;
+}
+
+main.main .btn-link.btn-left-top:hover .dennis.dennis-credit-stack {
+  transform: none !important;
+  padding-right: 0.2em !important;
+}
+
+main.main .btn-link.btn-left-top .btn-text {
+  justify-content: flex-start;
+  width: auto;
+  max-width: 100%;
+}
+
+/*
+ * Home hero portrait: 7.5/10 of the way from theme (-10% top) toward full headroom tweak (5% top).
+ */
+main.main .home-header .personal-image {
+  top: 1.25%;
+  height: 111.5%;
+}
+
+main.main .home-header .personal-image img {
+  object-position: center 26%;
+}
+
+@media screen and (max-width: 720px) {
+  main.main .home-header .personal-image {
+    top: 1.75%;
+    height: 102.75%;
+  }
+
+  main.main .home-header .personal-image img {
+    object-position: center 23.75%;
+  }
 }

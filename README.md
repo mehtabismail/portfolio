@@ -1,30 +1,58 @@
-[![Watch tutorial here](https://img.youtube.com/vi/sUKptmUVIBM/0.jpg)](https://youtu.be/sUKptmUVIBM)
+# Portfolio Next.js (Phase 1 + Phase 2 foundation)
 
-# [Watch video here](https://youtu.be/sUKptmUVIBM)
+Next.js clone of the Dennis Snellenberg portfolio. Same look and structure, now with a Phase 2 content-provider foundation (static/dynamic mode switch).
 
-## What you will learn
+## Run locally
 
-- Latest Next.js 13 features
-- Next.js App Router
-- Next.js Server Actions
-- Client & Server Components
-- TypeScript (Beginner & Intermediate)
-- Tailwind CSS
-- Context API
-- Advanced Animations with Framer Motion
-- React.Email & Resend
-- Custom React hooks
-- Fresh, modern UI design
-- Light & Dark mode
-- Responsive website
+Copy `env.template` to **`.env`** in this folder and fill in secrets (`.env` is gitignored). Then:
 
-## Important
+```bash
+npm install
+npm run dev
+```
 
-If you want to be a professional developer, you have to know the fundamentals like JavaScript and CSS really well. I highly recommend you go through my [Professional JavaScript](https://bytegrad.com/courses/professional-javascript) and [Professional CSS](https://bytegrad.com/courses/professional-css) courses.
+Open [http://localhost:3000](http://localhost:3000). Next.js loads `.env` automatically.
 
-I'm close to releasing a complete React & Next.js course. Get on the email list to receive early-bird pricing: [link](https://email.bytegrad.com/).
+## Build
 
-## Setup
+```bash
+npm run build
+npm start
+```
 
-1. Add RESEND_API_KEY=re_DjtBg7pu_4qoKWyo1ZsGYDNcb94fh2PzBre_DjtBg7pu_4qoKWyo1ZsGYDNcb94fh2PzB environment variable in .env.local
-2. In the send-email.ts action file, change the "to" email to your own email
+## Deploy (Vercel)
+
+Use **Root Directory** `portfolio-next` if the repo root is the parent folder. Add the same keys as in **`env.template`** under Vercel → Environment Variables (see **`PHASE2_SETUP.md` § 9**). Do not commit `.env`; copy values manually into Vercel.
+
+## Structure
+
+- **`/`** – Home (hero, intro, recent work grid, tiles, horizontal items)
+- **`/work`** – Work list with filters (All / Design / Development) and grid toggle (rows/columns)
+- **`/work/[slug]`** – Project case study (11 projects: twice, the-damai, fabric, etc.)
+- **`/about`** – About, services, Awwwards
+- **`/contact`** – Contact form and details
+- **`/archive`** – Archive placeholder
+
+## Features (Phase 1)
+
+- Loading screen (Hello/Bonjour/… then content reveal)
+- Fixed nav (menu + socials) and hamburger
+- Smooth scroll (Lenis)
+- GSAP ScrollTrigger and magnetic buttons
+- Work grid with category filter and rows/columns view
+- Project data in `data/projects.ts` (mock; Phase 2 will use Firestore)
+- All styles and assets from original site (in `public/assets`, `public/media`)
+
+## Content modes (Phase 2.0)
+
+- `static` mode: reads content from local `data/*.ts`
+- `dynamic` mode: reads content from Firestore (image links from Cloudinary stored in Firestore)
+- Optional fallback to static if dynamic fetch fails
+
+See setup details in `PHASE2_SETUP.md`.
+
+## Next phases
+
+- **Phase 2:** Firebase Firestore for projects, site settings, about content
+- **Phase 3:** Cloudinary for project images
+- **Phase 4:** SEO polish, optional admin

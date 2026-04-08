@@ -1,98 +1,57 @@
-"use client";
-
-import Header from "@/components/header";
+import type { Metadata } from "next";
+import { Animations, FixedNav, HamburgerNav, LoadingWrapper, NavProvider } from "@/components";
+import { getSiteContentData, getUserContent } from "@/lib/content";
 import "./globals.css";
-import { Inter } from "next/font/google";
-import ActiveSectionContextProvider from "@/context/active-section-context";
-import Footer from "@/components/footer";
-import ThemeSwitch from "@/components/theme-switch";
-import ThemeContextProvider from "@/context/theme-context";
-import { Toaster } from "react-hot-toast";
-import { usePathname } from "next/navigation";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
-import Script from "next/script";
 
-const inter = Inter({ subsets: ["latin"] });
-const GA_ID = "G-P7GHB6ZPM4";
+export async function generateMetadata(): Promise<Metadata> {
+  const user = await getUserContent();
+  return {
+    title: user.site.title,
+    description: user.site.description,
+    openGraph: {
+      title: user.site.title,
+      description: user.site.description,
+      siteName: user.fullName,
+      locale: "en",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: user.site.title,
+      description: user.site.description,
+    },
+  };
+}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const pathname = usePathname();
-  const isExcludedPage = pathname.includes("/projects");
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const [siteContent, userContent] = await Promise.all([getSiteContentData(), getUserContent()]);
 
-  const AnalyticsScripts = (
-    <>
-      <Script
-        strategy='afterInteractive'
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-      />
-      <Script
-        id='google-analytics'
-        strategy='afterInteractive'
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}');
-          `,
-        }}
-      />
-    </>
-  );
-
-  if (isExcludedPage) {
-    return (
-      <html lang='en' className='!scroll-smooth'>
-        <body
-          className={`${inter.className} bg-gray-50 text-gray-950 relative  dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
-        >
-          {AnalyticsScripts}
-
-          <div className='bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]'></div>
-          <div className='bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]'></div>
-
-          <ThemeContextProvider>
-            <ActiveSectionContextProvider>
-              {/* <Header /> */}
-              {children}
-              {/* <Footer /> */}
-              <SpeedInsights />
-              <Analytics />
-              <Toaster position='top-right' />
-              <ThemeSwitch />
-            </ActiveSectionContextProvider>
-          </ThemeContextProvider>
-        </body>
-      </html>
-    );
-  }
   return (
-    <html lang='en' className='!scroll-smooth'>
-      <body
-        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90`}
-      >
-        {AnalyticsScripts}
-
-        <div className='bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]'></div>
-        <div className='bg-[#dbd7fb] absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]'></div>
-
-        <ThemeContextProvider>
-          <ActiveSectionContextProvider>
-            <Header />
+    <html lang="en">
+      <head>
+        <link rel="preload" as="font" href="/assets/fonts/NeueMontreal-Regular.otf" type="font/otf" crossOrigin="anonymous" />
+        <link href="/assets/css/normalize.css" rel="stylesheet" />
+        <link href="/assets/css/locomotive-scroll.css" rel="stylesheet" />
+        <link href="/assets/css/styleguide.css" rel="stylesheet" />
+        <link href="/assets/css/components.css" rel="stylesheet" />
+        <link href="/assets/css/style-new.css" rel="stylesheet" />
+      </head>
+      <body data-barba="wrapper">
+        <NavProvider>
+          <div className="no-scroll-overlay"></div>
+          <LoadingWrapper />
+          <main className="main" id="home" data-barba="container" data-barba-namespace="home">
+            <HamburgerNav />
+            <div className="overlay fixed-nav-back"></div>
+            <FixedNav
+              navLinks={siteContent.nav.main}
+              socials={userContent.socials}
+              socialsTitle={siteContent.common.socialsTitle}
+            />
             {children}
-            <SpeedInsights />
-            <Analytics />
-            <Footer />
-
-            <Toaster position='top-right' />
-            <ThemeSwitch />
-          </ActiveSectionContextProvider>
-        </ThemeContextProvider>
+          </main>
+          <Animations />
+        </NavProvider>
       </body>
     </html>
   );
