@@ -1,5 +1,6 @@
 export { default as Animations } from "./Animations";
 export { default as ArrowIcon } from "./ArrowIcon";
+export { default as ClientInit } from "./ClientInit";
 export { default as DefaultNavBar } from "./DefaultNavBar";
 export { default as FixedNav } from "./FixedNav";
 export { default as Footer } from "./Footer";

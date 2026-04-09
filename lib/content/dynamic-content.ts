@@ -11,7 +11,9 @@ type FirestoreDoc<T> = Partial<T> & { [key: string]: unknown };
 
 /** Firestore Timestamps are class instances and break RSC → Client serialization. */
 function omitFirestoreDocMeta<T extends Record<string, unknown>>(data: T): T {
-  const { createdAt: _c, updatedAt: _u, ...rest } = data;
+  const rest = { ...data };
+  delete rest.createdAt;
+  delete rest.updatedAt;
   return rest as T;
 }
 

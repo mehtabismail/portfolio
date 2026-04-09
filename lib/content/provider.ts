@@ -1,4 +1,3 @@
-import type { ContactContent, Project, SiteContent, UserData } from "@/data";
 import { cache } from "react";
 import { getContentMode, shouldFallbackToStatic } from "./content-mode";
 import {

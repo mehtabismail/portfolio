@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { DefaultNavBar } from "@/components";
 import { getUserContent } from "@/lib/content";
 
