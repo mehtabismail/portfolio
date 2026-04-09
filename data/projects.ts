@@ -5,6 +5,7 @@ export interface Project {
   titleDisplay: string; // e.g. "FABRIC™"
   // Phase 2: publishing flag (currently not used for filtering/hiding on frontend)
   isPublished?: boolean;
+  isFeatured?: boolean;
   location: string;
   year: string;
   services: string;

@@ -3,7 +3,26 @@ export type SocialLink = {
   href: string;
 };
 
-export const user = {
+export interface UserData {
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  legalName: string;
+  role: string;
+  location: string;
+  email: string;
+  phoneRaw: string;
+  phoneDisplay: string;
+  coc: string;
+  vat: string;
+  site: {
+    title: string;
+    description: string;
+  };
+  socials: SocialLink[];
+}
+
+export const user: UserData = {
   firstName: "Mehtab",
   lastName: "Ismail",
   fullName: "Mehtab Ismail",
@@ -28,7 +47,5 @@ export const user = {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/mehtabismail/",
     },
-  ] as SocialLink[],
-} as const;
-
-export type UserData = typeof user;
+  ],
+};

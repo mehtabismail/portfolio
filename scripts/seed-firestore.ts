@@ -53,6 +53,7 @@ async function main() {
     await upsertWithTimestamps("projects", project.slug, {
       ...project,
       isPublished: project.isPublished ?? true,
+      isFeatured: project.isFeatured ?? false,
     });
   }
 

@@ -73,6 +73,10 @@ async function main() {
         console.error(`Invalid projects/${doc.id}. Missing: ${missing.join(", ")}`);
         failed = true;
       }
+      if (data.isFeatured !== undefined && typeof data.isFeatured !== "boolean") {
+        console.error(`Invalid projects/${doc.id}. "isFeatured" must be boolean when provided.`);
+        failed = true;
+      }
     }
     console.log(`OK projects/${projectsSnap.size} docs`);
   }

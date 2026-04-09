@@ -14,11 +14,13 @@ export async function getStaticContactContent(): Promise<ContactContent> {
 }
 
 export async function getStaticProjects(): Promise<Project[]> {
-  return projects;
+  return projects.filter((project) => project.isPublished !== false);
 }
 
 export async function getStaticProjectBySlug(slug: string): Promise<Project | null> {
-  return projects.find((project) => project.slug === slug) ?? null;
+  const project = projects.find((item) => item.slug === slug);
+  if (!project || project.isPublished === false) return null;
+  return project;
 }
 
 export async function getStaticFeaturedProjects(count = 4): Promise<Project[]> {

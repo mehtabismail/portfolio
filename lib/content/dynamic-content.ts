@@ -137,7 +137,7 @@ const getDynamicProjectsCached = unstable_cache(
     const snapshot = await db.collection("projects").orderBy("order", "asc").get();
     return snapshot.docs
       .map((doc) => normalizeProject(doc.data() as FirestoreDoc<Project>))
-      .filter((project): project is Project => project !== null);
+      .filter((project): project is Project => project !== null && project.isPublished !== false);
   },
   ["firestore", "projects", "all"],
   { revalidate: CONTENT_REVALIDATE },
@@ -157,7 +157,9 @@ export async function getDynamicProjectBySlug(slug: string): Promise<Project | n
         .limit(1)
         .get();
       if (snapshot.empty) return null;
-      return normalizeProject(snapshot.docs[0].data() as FirestoreDoc<Project>);
+      const project = normalizeProject(snapshot.docs[0].data() as FirestoreDoc<Project>);
+      if (!project || project.isPublished === false) return null;
+      return project;
     },
     ["firestore", "project", slug],
     { revalidate: CONTENT_REVALIDATE },
@@ -166,7 +168,7 @@ export async function getDynamicProjectBySlug(slug: string): Promise<Project | n
 
 export async function getDynamicFeaturedProjects(count = 4): Promise<Project[]> {
   const all = await getDynamicProjects();
-  const featured = all.filter((project) => (project as Project & { isFeatured?: boolean }).isFeatured);
+  const featured = all.filter((project) => project.isFeatured);
   if (featured.length) return featured.slice(0, count);
   return all.slice(0, count);
 }

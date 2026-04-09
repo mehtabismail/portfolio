@@ -1,4 +1,27 @@
-export const contactContent = {
+export interface ContactContent {
+  heroLine1: string;
+  heroLine2: string;
+  form: {
+    fieldPhone: string;
+    fieldName: string;
+    fieldEmail: string;
+    fieldCompany: string;
+    fieldService: string;
+    fieldMessage: string;
+    placeholderName: string;
+    placeholderEmail: string;
+    placeholderCompany: string;
+    placeholderService: string;
+    submitLabel: string;
+  };
+  sections: {
+    contactDetails: string;
+    businessDetails: string;
+    socials: string;
+  };
+}
+
+export const contactContent: ContactContent = {
   heroLine1: "Let's start a",
   heroLine2: "project together",
   form: {
@@ -19,6 +42,4 @@ export const contactContent = {
     businessDetails: "Business Details",
     socials: "Socials",
   },
-} as const;
-
-export type ContactContent = typeof contactContent;
+};

@@ -1,4 +1,40 @@
-export const siteContent = {
+export interface SiteContent {
+  nav: {
+    main: Array<{ href: string; label: string }>;
+  };
+  home: {
+    heroRolePrefix: string;
+    heroRoleSuffix: string;
+    introTitle: string;
+    introDescription: string;
+    recentWorkTitle: string;
+    moreWorkLabel: string;
+  };
+  common: {
+    socialsTitle: string;
+    versionLabel: string;
+    versionValue: string;
+    localTimeLabel: string;
+  };
+  footer: {
+    ctaLine1: string;
+    ctaLine2: string;
+    getInTouch: string;
+  };
+  archive: {
+    headerLine1: string;
+    headerLine2: string;
+    hoverLabel: string;
+    placeholder: string;
+  };
+  work: {
+    headerLine1: string;
+    headerLine2: string;
+    archiveButtonLabel: string;
+  };
+}
+
+export const siteContent: SiteContent = {
   nav: {
     main: [
       { href: "/", label: "Home" },
@@ -40,6 +76,4 @@ export const siteContent = {
     headerLine2: "digital products",
     archiveButtonLabel: "Archive",
   },
-} as const;
-
-export type SiteContent = typeof siteContent;
+};
