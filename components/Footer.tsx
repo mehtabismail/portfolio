@@ -86,6 +86,18 @@ export default async function Footer() {
           <div className="container no-padding">
             <div className="row bottom-footer">
               <div className="flex-col">
+                <div className="btn btn-link" style={{ marginBottom: "1rem" }}>
+                  <Link
+                    href="/create"
+                    className="btn-click magnetic"
+                    data-strength="20"
+                    data-strength-text="10"
+                  >
+                    <span className="btn-text">
+                      <span className="btn-text-inner">Create your portfolio</span>
+                    </span>
+                  </Link>
+                </div>
                 <div className="credits">
                   <h5>{siteContent.common.versionLabel}</h5>
                   <p>{siteContent.common.versionValue}</p>

@@ -3,10 +3,12 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import type { Project } from "@/data";
+import { tenantHref } from "@/lib/platform/tenant-href";
 
 type Filter = "all" | "design" | "development";
 
-export default function WorkFilters({ projects }: { projects: Project[] }) {
+export default function WorkFilters({ projects, basePath = "" }: { projects: Project[]; basePath?: string }) {
+  const projectHref = (slug: string) => tenantHref(basePath, `/work/${slug}`);
   const [filter, setFilter] = useState<Filter>("all");
   const [gridView, setGridView] = useState<"rows" | "columns">("rows");
 
@@ -167,7 +169,7 @@ export default function WorkFilters({ projects }: { projects: Project[] }) {
                   className={`${p.categories.join(" ")} visible`}
                 >
                   <div className="stripe animate" />
-                  <Link href={`/work/${p.slug}`} className="row">
+                  <Link href={projectHref(p.slug)} className="row">
                     <div className="flex-col">
                       <h4>
                         <span>{p.titleDisplay}</span>
@@ -202,7 +204,7 @@ export default function WorkFilters({ projects }: { projects: Project[] }) {
                   className={`${p.categories.join(" ")} visible`}
                 >
                   <div className="single-tile-wrap">
-                    <Link href={`/work/${p.slug}`} className="row">
+                    <Link href={projectHref(p.slug)} className="row">
                       <div className="flex-col">
                         <div className="tile-image">
                           <div

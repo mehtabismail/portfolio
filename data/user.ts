@@ -4,6 +4,8 @@ export type SocialLink = {
 };
 
 export interface UserData {
+  /** Hero / profile image: local `/assets/...` or remote (e.g. Cloudinary). */
+  avatarUrl: string;
   firstName: string;
   lastName: string;
   fullName: string;
@@ -23,6 +25,7 @@ export interface UserData {
 }
 
 export const user: UserData = {
+  avatarUrl: "/assets/img/Mehtab.jpg",
   firstName: "Mehtab",
   lastName: "Ismail",
   fullName: "Mehtab Ismail",

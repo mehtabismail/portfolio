@@ -29,6 +29,11 @@ const getDynamicUserCached = unstable_cache(
     const remote = await readSingleton<UserData>("user");
     if (!remote) return user;
     const remotePlain = omitFirestoreDocMeta(remote as Record<string, unknown>);
+    const remoteAvatar = remotePlain.avatarUrl;
+    const avatarUrl =
+      typeof remoteAvatar === "string" && remoteAvatar.trim().length > 0
+        ? remoteAvatar.trim()
+        : user.avatarUrl;
     return {
       ...user,
       ...remotePlain,
@@ -37,6 +42,7 @@ const getDynamicUserCached = unstable_cache(
         ...(remote.site as Partial<UserData["site"]> | undefined),
       },
       socials: Array.isArray(remote.socials) ? (remote.socials as UserData["socials"]) : user.socials,
+      avatarUrl,
     };
   },
   ["firestore", "user", "main"],

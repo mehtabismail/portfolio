@@ -26,6 +26,7 @@ export default function JsonEditorForm({ title, endpoint, initialValue, helpText
       const response = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify({ payload: parsed }),
       });
       const data = (await response.json()) as { ok?: boolean; error?: string };

@@ -1,0 +1,53 @@
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #0d0d0f;
+  color: #f4f4f5;
+  font-family: system-ui, sans-serif;
+}
+
+.card {
+  max-width: 28rem;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: rgba(244, 244, 245, 0.75);
+}
+
+.err {
+  margin: 1rem 0 0;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: rgba(239, 68, 68, 0.12);
+  color: #fca5a5;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  color: #a3e635;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

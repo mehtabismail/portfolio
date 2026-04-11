@@ -32,10 +32,21 @@ function normalizeSocialLinks(value: unknown): SocialLink[] {
   });
 }
 
+function asOptionalNonEmptyString(value: unknown, field: string): string | undefined {
+  if (value === undefined || value === null) return undefined;
+  if (typeof value !== "string") {
+    throw new Error(`Expected "${field}" to be a string when provided`);
+  }
+  const trimmed = value.trim();
+  return trimmed.length ? trimmed : undefined;
+}
+
 export function parseUserPayload(value: unknown): UserData {
   const record = asRecord(value);
   const site = asRecord(record.site);
   return {
+    avatarUrl:
+      asOptionalNonEmptyString(record.avatarUrl, "avatarUrl") ?? "/assets/img/Mehtab.jpg",
     firstName: asString(record.firstName, "firstName"),
     lastName: asString(record.lastName, "lastName"),
     fullName: asString(record.fullName, "fullName"),
