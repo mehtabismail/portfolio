@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import BlogMarkdown from "@/components/platform/BlogMarkdown";
 import type { BlogData, ProjectData, TemplateProps } from "../types";
 import styles from "./minimal.module.css";
 import { Nav } from "./Nav";
@@ -367,8 +368,8 @@ function BlogDetailView({ data, blog }: { data: TemplateProps["data"]; blog: Blo
           </p>
         ) : null}
         {blog.content ? (
-          <div className={styles.prose} style={{ marginTop: "2rem", whiteSpace: "pre-wrap" }}>
-            {blog.content}
+          <div className={styles.prose} style={{ marginTop: "2rem" }}>
+            <BlogMarkdown markdown={blog.content} variant="dark" />
           </div>
         ) : null}
       </article>

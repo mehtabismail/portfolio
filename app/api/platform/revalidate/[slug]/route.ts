@@ -24,5 +24,7 @@ export async function POST(_request: Request, context: { params: Promise<{ slug:
   revalidatePath(`/u/${slug}/about`);
   revalidatePath(`/u/${slug}/contact`);
   revalidatePath(`/u/${slug}/archive`);
+  revalidatePath(`/u/${slug}/blogs`);
+  revalidatePath("/blogs");
   return NextResponse.json({ ok: true });
 }

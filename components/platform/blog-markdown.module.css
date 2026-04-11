@@ -1,0 +1,135 @@
+.blogMd {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: inherit;
+}
+
+.blogMd h1,
+.blogMd h2,
+.blogMd h3 {
+  margin: 1.25em 0 0.5em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.blogMd h1 {
+  font-size: 1.65rem;
+}
+
+.blogMd h2 {
+  font-size: 1.35rem;
+}
+
+.blogMd h3 {
+  font-size: 1.15rem;
+}
+
+.blogMd p {
+  margin: 0.75em 0;
+}
+
+.blogMd ul,
+.blogMd ol {
+  margin: 0.75em 0;
+  padding-left: 1.35em;
+}
+
+.blogMd li {
+  margin: 0.25em 0;
+}
+
+.blogMd a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blogMd code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 0.06);
+}
+
+.blogMd pre {
+  margin: 1em 0;
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 8px;
+  background: rgb(0 0 0 / 0.06);
+  font-size: 0.875rem;
+}
+
+.blogMd pre code {
+  padding: 0;
+  background: none;
+}
+
+.blogMd blockquote {
+  margin: 1em 0;
+  padding-left: 1rem;
+  border-left: 3px solid rgb(0 0 0 / 0.2);
+  color: rgb(0 0 0 / 0.75);
+}
+
+.blogMd table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 0.9rem;
+}
+
+.blogMd th,
+.blogMd td {
+  border: 1px solid rgb(0 0 0 / 0.12);
+  padding: 0.45em 0.6em;
+  text-align: left;
+}
+
+.blogMd hr {
+  margin: 1.5em 0;
+  border: none;
+  border-top: 1px solid rgb(0 0 0 / 0.12);
+}
+
+/* ── Dark surfaces (tenant minimal template) ───────────────────────── */
+.blogMdDark {
+  color: #f4f4f5;
+}
+
+.blogMdDark h1,
+.blogMdDark h2,
+.blogMdDark h3 {
+  color: #fafafa;
+}
+
+.blogMdDark a {
+  color: #c8ff3d;
+}
+
+.blogMdDark code {
+  background: rgb(255 255 255 / 0.1);
+  color: #f4f4f5;
+}
+
+.blogMdDark pre {
+  background: rgb(255 255 255 / 0.06);
+}
+
+.blogMdDark pre code {
+  color: #e4e4e7;
+}
+
+.blogMdDark blockquote {
+  border-left-color: rgb(255 255 255 / 0.25);
+  color: rgb(244 244 245 / 0.8);
+}
+
+.blogMdDark th,
+.blogMdDark td {
+  border-color: rgb(255 255 255 / 0.12);
+}
+
+.blogMdDark hr {
+  border-top-color: rgb(255 255 255 / 0.12);
+}

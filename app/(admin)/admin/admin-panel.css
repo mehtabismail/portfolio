@@ -498,6 +498,41 @@ a.admin-btn {
   font-weight: 500;
 }
 
+.admin-blog-editor-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .admin-blog-editor-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-blog-editor-split textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--admin-border);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 0.875rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  line-height: 1.45;
+  color: var(--admin-text);
+  background: var(--admin-surface);
+  resize: vertical;
+  min-height: 420px;
+}
+
+.admin-blog-editor-split textarea:focus {
+  outline: none;
+  border-color: rgb(99 102 241 / 0.45);
+  box-shadow: 0 0 0 3px rgb(99 102 241 / 0.15);
+}
+
 /* Dashboard quick links */
 .admin-dash-grid {
   display: grid;

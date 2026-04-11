@@ -20,6 +20,8 @@ export default function TenantAdminChrome({ slug, displayName, children }: Props
     { href: `${base}/site`, label: "Site" },
     { href: `${base}/contact`, label: "Contact" },
     { href: `${base}/projects`, label: "Projects" },
+    { href: `${base}/blogs`, label: "Blog" },
+    { href: `${base}/integrations`, label: "Integrations" },
     { href: `${base}/settings`, label: "Settings" },
   ] as const;
 

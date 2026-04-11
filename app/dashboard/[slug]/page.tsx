@@ -31,6 +31,14 @@ export default async function DashboardHomePage({ params }: { params: Promise<{ 
           <p className="admin-dash-tile__label">Projects</p>
           <p className="admin-dash-tile__desc">CRUD, publish state, featured flag, ordering, and media URLs.</p>
         </Link>
+        <Link className="admin-dash-tile" href={`/dashboard/${slug}/blogs`}>
+          <p className="admin-dash-tile__label">Blog</p>
+          <p className="admin-dash-tile__desc">Markdown posts, tags, cover image, draft or published.</p>
+        </Link>
+        <Link className="admin-dash-tile" href={`/dashboard/${slug}/integrations`}>
+          <p className="admin-dash-tile__label">Integrations</p>
+          <p className="admin-dash-tile__desc">Sync posts from Medium and Dev.to into your blog.</p>
+        </Link>
         <Link className="admin-dash-tile" href={`/dashboard/${slug}/settings`}>
           <p className="admin-dash-tile__label">Settings</p>
           <p className="admin-dash-tile__desc">URL slug, profile fields, publish toggle, and account details.</p>
