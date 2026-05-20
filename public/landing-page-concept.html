@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevFolio — Your developer presence, fully alive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --bg3: #16161f;
+  --accent: #7c6dfa;
+  --accent2: #e8645a;
+  --accent3: #3ecf8e;
+  --text: #f0eeff;
+  --text2: #9b97b8;
+  --text3: #5a5878;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --card: rgba(255,255,255,0.03);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,h2,h3,h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+
+/* ── NAVBAR ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 64px;
+  background: rgba(10,10,15,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 32px; }
+.nav-links a { color: var(--text2); font-size: 14px; text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent); color: #fff; border: none; padding: 9px 20px;
+  border-radius: 8px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: opacity 0.2s; text-decoration: none;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; padding: 120px 48px 80px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,109,250,0.18) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%, -60%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute; width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(62,207,142,0.1) 0%, transparent 70%);
+  bottom: 10%; right: 10%; pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(124,109,250,0.12); border: 1px solid rgba(124,109,250,0.3);
+  padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
+  font-size: 13px; color: var(--accent); font-weight: 500;
+  animation: fadeDown 0.6s ease both;
+}
+.hero-badge-dot { width: 6px; height: 6px; background: var(--accent3); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+@keyframes fadeDown { from{opacity:0;transform:translateY(-16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+.hero-title {
+  font-size: clamp(44px, 7vw, 86px); font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1.0; margin-bottom: 24px;
+  animation: fadeUp 0.7s 0.1s ease both;
+}
+.hero-title .line2 { color: var(--accent); display: block; }
+.hero-sub {
+  font-size: clamp(16px, 2vw, 19px); color: var(--text2); max-width: 560px;
+  margin: 0 auto 40px; font-weight: 300; line-height: 1.7;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+.hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.7s 0.3s ease both; }
+.btn-primary {
+  background: var(--accent); color: #fff; border: none; padding: 14px 28px;
+  border-radius: 10px; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 30px rgba(124,109,250,0.35);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 40px rgba(124,109,250,0.5); }
+.btn-secondary {
+  background: transparent; color: var(--text); border: 1px solid var(--border2); padding: 14px 28px;
+  border-radius: 10px; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-secondary:hover { border-color: var(--accent); background: rgba(124,109,250,0.06); }
+
+/* Portfolio cards carousel */
+.hero-cards {
+  display: flex; gap: 16px; margin-top: 64px; justify-content: center;
+  animation: fadeUp 0.8s 0.5s ease both;
+  overflow: hidden; max-width: 100%;
+}
+.port-card {
+  background: var(--bg3); border: 1px solid var(--border2); border-radius: 16px;
+  width: 220px; min-width: 220px; padding: 20px; text-align: left;
+  transition: transform 0.3s; flex-shrink: 0;
+}
+.port-card:hover { transform: translateY(-6px); }
+.port-avatar {
+  width: 44px; height: 44px; border-radius: 50%; margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #fff;
+}
+.port-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+.port-role { font-size: 12px; color: var(--text2); margin-bottom: 12px; }
+.port-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.port-tag { font-size: 10px; padding: 3px 8px; border-radius: 20px; background: rgba(255,255,255,0.06); color: var(--text2); }
+.port-stats { display: flex; gap: 12px; margin-top: 14px; border-top: 1px solid var(--border); padding-top: 12px; }
+.port-stat { font-size: 11px; color: var(--text3); }
+.port-stat strong { display: block; font-size: 13px; color: var(--text); font-family: 'Syne', sans-serif; }
+
+/* ── SOCIAL PROOF BAR ── */
+#proof {
+  padding: 20px 48px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;
+  background: var(--bg2);
+}
+.proof-stat { text-align: center; }
+.proof-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--text); }
+.proof-label { font-size: 13px; color: var(--text2); }
+
+/* ── SECTION SHARED ── */
+section { padding: 100px 48px; }
+.section-label {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--accent);
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.section-title { font-size: clamp(28px, 4vw, 46px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; }
+.section-sub { font-size: 17px; color: var(--text2); max-width: 520px; font-weight: 300; line-height: 1.7; }
+
+/* ── HOW IT WORKS ── */
+#how { background: var(--bg2); }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 56px; max-width: 960px; margin-left: auto; margin-right: auto; }
+.step {
+  background: var(--bg3); padding: 36px 32px; position: relative;
+  transition: background 0.3s;
+}
+.step:first-child { border-radius: 16px 0 0 16px; }
+.step:last-child { border-radius: 0 16px 16px 0; }
+.step:hover { background: rgba(124,109,250,0.08); }
+.step-num {
+  font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800;
+  color: rgba(124,109,250,0.15); line-height: 1; margin-bottom: 20px;
+}
+.step-icon {
+  width: 48px; height: 48px; background: rgba(124,109,250,0.12);
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px; border: 1px solid rgba(124,109,250,0.2);
+}
+.step-title { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.step-desc { font-size: 14px; color: var(--text2); line-height: 1.7; }
+.step-connector {
+  position: absolute; right: -18px; top: 50%; transform: translateY(-50%);
+  z-index: 2; width: 36px; height: 36px; background: var(--bg);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border2);
+}
+
+/* ── BENTO GRID ── */
+#features { background: var(--bg); }
+.bento { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; gap: 16px; margin-top: 56px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.bento-card {
+  background: var(--bg3); border: 1px solid var(--border); border-radius: 20px;
+  padding: 28px; overflow: hidden; position: relative; transition: border-color 0.3s;
+}
+.bento-card:hover { border-color: var(--border2); }
+.bento-card.tall { grid-row: span 2; }
+.bento-card.wide { grid-column: span 2; }
+.bento-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+.bento-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.bento-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+.bento-visual { margin-top: 20px; }
+
+/* Mock UI elements inside bento */
+.mock-browser {
+  background: var(--bg2); border-radius: 10px; overflow: hidden; border: 1px solid var(--border);
+}
+.mock-bar { background: rgba(255,255,255,0.04); padding: 8px 12px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--border); }
+.mock-dot { width: 8px; height: 8px; border-radius: 50%; }
+.mock-url { flex: 1; background: rgba(255,255,255,0.05); border-radius: 4px; height: 16px; margin: 0 12px; }
+.mock-content { padding: 16px; }
+
+.dash-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.dash-block { border-radius: 6px; height: 32px; background: rgba(124,109,250,0.15); flex: 1; }
+.dash-block.sm { flex: 0.6; background: rgba(62,207,142,0.15); }
+.dash-block.accent { background: rgba(232,100,90,0.15); }
+.dash-chart { height: 60px; display: flex; align-items: flex-end; gap: 4px; margin-top: 8px; }
+.dash-bar { border-radius: 3px 3px 0 0; flex: 1; background: rgba(124,109,250,0.3); }
+
+.blog-post { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px; margin-bottom: 8px; }
+.blog-post-title { font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+.blog-post-meta { font-size: 11px; color: var(--text3); }
+.blog-post-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.07); margin-top: 8px; }
+.blog-post-line.short { width: 60%; }
+
+.proj-card-mini { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.proj-icon { width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; }
+.proj-info { flex: 1; }
+.proj-name { font-size: 12px; font-weight: 600; color: var(--text); }
+.proj-tech { font-size: 10px; color: var(--text3); }
+.proj-stars { font-size: 11px; color: var(--accent); }
+
+/* ── PORTFOLIO EXPLORER ── */
+#explorer { background: var(--bg2); }
+.explorer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.explore-card {
+  background: var(--bg3); border: 1px solid var(--border); border-radius: 18px;
+  overflow: hidden; transition: transform 0.3s, border-color 0.3s; cursor: pointer;
+}
+.explore-card:hover { transform: translateY(-8px); border-color: var(--border2); }
+.explore-header { height: 100px; position: relative; display: flex; align-items: flex-end; padding: 14px; }
+.explore-avatar {
+  width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #fff;
+}
+.explore-body { padding: 16px; }
+.explore-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+.explore-role { font-size: 12px; color: var(--text2); margin-bottom: 10px; }
+.explore-bio { font-size: 12px; color: var(--text2); line-height: 1.5; margin-bottom: 14px; }
+.explore-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.explore-tag { font-size: 10px; padding: 3px 10px; border-radius: 20px; background: rgba(255,255,255,0.05); color: var(--text2); }
+.explore-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid var(--border); }
+.explore-stat { font-size: 11px; color: var(--text3); }
+.explore-stat strong { color: var(--text); }
+.explore-link { font-size: 11px; color: var(--accent); font-weight: 600; }
+
+/* ── BLOG SECTION ── */
+#blog { background: var(--bg); }
+.blog-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 56px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.blog-mockup {
+  background: var(--bg3); border: 1px solid var(--border); border-radius: 20px; overflow: hidden;
+}
+.blog-mock-bar { background: var(--bg2); padding: 12px 16px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--border); }
+.blog-mock-body { padding: 24px; }
+.blog-mock-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: rgba(124,109,250,0.1); padding: 4px 10px; border-radius: 20px; margin-bottom: 14px; }
+.blog-mock-title { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+.blog-mock-author { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.blog-mock-av { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; }
+.blog-mock-meta { font-size: 12px; color: var(--text2); }
+.blog-mock-line { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.07); margin-bottom: 8px; }
+.blog-mock-line.short { width: 55%; }
+.blog-mock-code { background: rgba(124,109,250,0.08); border-left: 3px solid var(--accent); padding: 12px; border-radius: 0 8px 8px 0; margin: 14px 0; font-family: monospace; font-size: 11px; color: var(--accent); }
+.blog-features { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+.blog-feat { display: flex; align-items: flex-start; gap: 14px; }
+.blog-feat-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(62,207,142,0.1); border: 1px solid rgba(62,207,142,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.blog-feat-text h4 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+.blog-feat-text p { font-size: 13px; color: var(--text2); }
+
+/* ── ROADMAP ── */
+#roadmap { background: var(--bg2); }
+.roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.road-col { background: var(--bg3); border-radius: 16px; padding: 20px; border: 1px solid var(--border); }
+.road-col-title {
+  font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.road-item {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px;
+  padding: 12px 14px; margin-bottom: 8px;
+}
+.road-item-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+.road-item-desc { font-size: 11px; color: var(--text3); }
+.road-badge {
+  display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px;
+  border-radius: 20px; margin-bottom: 6px;
+}
+.road-live { background: rgba(62,207,142,0.15); color: #3ecf8e; }
+.road-soon { background: rgba(124,109,250,0.15); color: #9d8ffa; }
+.road-future { background: rgba(232,100,90,0.15); color: #e8645a; }
+
+/* ── COMPARISON ── */
+#compare { background: var(--bg); }
+.compare-table-wrap { margin-top: 56px; overflow-x: auto; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th, .compare-table td { padding: 14px 20px; text-align: center; font-size: 14px; border-bottom: 1px solid var(--border); }
+.compare-table th:first-child, .compare-table td:first-child { text-align: left; }
+.compare-table thead th { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--text2); padding-bottom: 16px; }
+.compare-table thead th.highlight { color: var(--accent); }
+.col-highlight { background: rgba(124,109,250,0.05); border-left: 1px solid rgba(124,109,250,0.15); border-right: 1px solid rgba(124,109,250,0.15); }
+.check { color: var(--accent3); font-size: 16px; }
+.cross { color: rgba(255,255,255,0.2); font-size: 16px; }
+.partial { color: var(--accent); font-size: 14px; }
+.feature-name { font-size: 14px; color: var(--text2); }
+
+/* ── FINAL CTA ── */
+#cta {
+  background: var(--bg2); text-align: center; padding: 120px 48px;
+  position: relative; overflow: hidden;
+}
+.cta-glow {
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,109,250,0.15) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.cta-title { font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.cta-sub { font-size: 18px; color: var(--text2); margin-bottom: 44px; font-weight: 300; }
+.cta-trust { margin-top: 24px; font-size: 13px; color: var(--text3); display: flex; justify-content: center; align-items: center; gap: 20px; }
+.cta-trust span::before { content: "✓ "; color: var(--accent3); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 36px 48px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; color: var(--text); }
+.footer-logo span { color: var(--accent); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: var(--text3); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-credit { font-size: 12px; color: var(--text3); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay1 { transition-delay: 0.1s; }
+.reveal-delay2 { transition-delay: 0.2s; }
+.reveal-delay3 { transition-delay: 0.3s; }
+
+/* ── COUNTER ── */
+.counter-num { transition: all 0.1s; }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  nav .nav-links { display: none; }
+  #hero, section { padding: 80px 20px; }
+  .steps, .bento, .explorer-grid, .roadmap-grid, .blog-layout { grid-template-columns: 1fr; }
+  .bento-card.wide, .bento-card.tall { grid-column: span 1; grid-row: span 1; }
+  #proof { gap: 32px; padding: 20px; }
+  footer { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Dev<span>Folio</span></div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#explorer">Explore</a>
+    <a href="#blog">Blog</a>
+    <a href="#roadmap">Roadmap</a>
+  </div>
+  <a href="#cta" class="nav-cta">Create yours — free</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-badge"><span class="hero-badge-dot"></span> Now with blogging + project showcase</div>
+  <h1 class="hero-title">
+    Your developer presence,<br>
+    <span class="line2">fully alive.</span>
+  </h1>
+  <p class="hero-sub">Sign in with Google, and in minutes you have a beautiful portfolio, a blog, and a dashboard — all at your own URL. No code needed.</p>
+  <div class="hero-ctas">
+    <a href="#cta" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Create your portfolio — free
+    </a>
+    <a href="#explorer" class="btn-secondary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      Browse portfolios
+    </a>
+  </div>
+
+  <!-- Live portfolio cards -->
+  <div class="hero-cards">
+    <div class="port-card" style="animation: fadeUp 0.7s 0.6s ease both;">
+      <div class="port-avatar" style="background: linear-gradient(135deg, #7c6dfa, #9d8ffa);">AM</div>
+      <div class="port-name">Ahmed Malik</div>
+      <div class="port-role">Full Stack Developer · Lahore</div>
+      <div class="port-tags">
+        <span class="port-tag">React</span>
+        <span class="port-tag">Node.js</span>
+        <span class="port-tag">Firebase</span>
+      </div>
+      <div class="port-stats">
+        <div class="port-stat"><strong>12</strong>Projects</div>
+        <div class="port-stat"><strong>8</strong>Blogs</div>
+        <div class="port-stat"><strong>1.2k</strong>Views</div>
+      </div>
+    </div>
+    <div class="port-card" style="animation: fadeUp 0.7s 0.75s ease both; margin-top: -24px;">
+      <div class="port-avatar" style="background: linear-gradient(135deg, #3ecf8e, #2ab87a);">SR</div>
+      <div class="port-name">Sara Rehman</div>
+      <div class="port-role">UI/UX Designer · Karachi</div>
+      <div class="port-tags">
+        <span class="port-tag">Figma</span>
+        <span class="port-tag">Webflow</span>
+        <span class="port-tag">Design</span>
+      </div>
+      <div class="port-stats">
+        <div class="port-stat"><strong>9</strong>Projects</div>
+        <div class="port-stat"><strong>5</strong>Blogs</div>
+        <div class="port-stat"><strong>890</strong>Views</div>
+      </div>
+    </div>
+    <div class="port-card" style="animation: fadeUp 0.7s 0.9s ease both;">
+      <div class="port-avatar" style="background: linear-gradient(135deg, #e8645a, #f0877e);">ZK</div>
+      <div class="port-name">Zaid Khan</div>
+      <div class="port-role">Backend Engineer · Islamabad</div>
+      <div class="port-tags">
+        <span class="port-tag">Python</span>
+        <span class="port-tag">Django</span>
+        <span class="port-tag">AWS</span>
+      </div>
+      <div class="port-stats">
+        <div class="port-stat"><strong>18</strong>Projects</div>
+        <div class="port-stat"><strong>11</strong>Blogs</div>
+        <div class="port-stat"><strong>2.4k</strong>Views</div>
+      </div>
+    </div>
+    <div class="port-card" style="animation: fadeUp 0.7s 1.05s ease both; margin-top: -24px;">
+      <div class="port-avatar" style="background: linear-gradient(135deg, #f0a328, #fabd5a);">NF</div>
+      <div class="port-name">Nadia Farooq</div>
+      <div class="port-role">Frontend Dev · Remote</div>
+      <div class="port-tags">
+        <span class="port-tag">Vue.js</span>
+        <span class="port-tag">Tailwind</span>
+        <span class="port-tag">TypeScript</span>
+      </div>
+      <div class="port-stats">
+        <div class="port-stat"><strong>7</strong>Projects</div>
+        <div class="port-stat"><strong>14</strong>Blogs</div>
+        <div class="port-stat"><strong>3.1k</strong>Views</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div id="proof">
+  <div class="proof-stat">
+    <div class="proof-num counter-num" data-target="847">0</div>
+    <div class="proof-label">Portfolios created</div>
+  </div>
+  <div class="proof-stat">
+    <div class="proof-num counter-num" data-target="2340">0</div>
+    <div class="proof-label">Blogs published</div>
+  </div>
+  <div class="proof-stat">
+    <div class="proof-num counter-num" data-target="9600">0</div>
+    <div class="proof-label">Projects showcased</div>
+  </div>
+  <div class="proof-stat">
+    <div class="proof-num counter-num" data-target="48000">0</div>
+    <div class="proof-label">Total views</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div style="text-align:center; max-width:640px; margin: 0 auto;">
+    <div class="section-label reveal">How it works</div>
+    <h2 class="section-title reveal reveal-delay1">Three steps. Then you're live.</h2>
+    <p class="section-sub reveal reveal-delay2" style="margin: 0 auto;">No setup overhead, no design decisions, no hosting stress. Just your work — online and beautiful.</p>
+  </div>
+
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c6dfa" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="step-title">Sign in with Google</div>
+      <div class="step-desc">One click. Your name, photo, and email auto-populate. Your portfolio skeleton is instantly created.</div>
+      <div class="step-connector">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M8 8h8M8 16h5"/></svg>
+      </div>
+      <div class="step-title">Add your work</div>
+      <div class="step-desc">Use your dashboard to add projects, work experience, and publish your first blog post. All with a clean editor.</div>
+      <div class="step-connector">→</div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8645a" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+      </div>
+      <div class="step-title">Share your URL</div>
+      <div class="step-desc">Your portfolio lives at <code style="font-size:12px; color: var(--accent); background: rgba(124,109,250,0.1); padding: 2px 6px; border-radius:4px;">/u/yourname</code>. Share it anywhere — LinkedIn, job apps, Twitter.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO FEATURES -->
+<section id="features">
+  <div style="text-align:center; max-width:640px; margin: 0 auto;">
+    <div class="section-label reveal">Features</div>
+    <h2 class="section-title reveal reveal-delay1">Everything in one platform</h2>
+    <p class="section-sub reveal reveal-delay2" style="margin: 0 auto;">Dashboard, portfolio, blog, projects — managed from a single place, shown at a single URL.</p>
+  </div>
+
+  <div class="bento reveal">
+
+    <!-- Dashboard card -->
+    <div class="bento-card wide">
+      <div class="bento-label">Dashboard</div>
+      <div class="bento-title">Manage everything from one place</div>
+      <div class="bento-desc">Edit your projects, update work history, manage blog posts — all without touching code.</div>
+      <div class="bento-visual">
+        <div class="mock-browser">
+          <div class="mock-bar">
+            <div class="mock-dot" style="background:#e8645a"></div>
+            <div class="mock-dot" style="background:#f0a328"></div>
+            <div class="mock-dot" style="background:#3ecf8e"></div>
+            <div class="mock-url"></div>
+            <span style="font-size:10px; color: var(--text3);">devfolio.app/dashboard</span>
+          </div>
+          <div class="mock-content">
+            <div class="dash-row">
+              <div class="dash-block"></div>
+              <div class="dash-block sm"></div>
+              <div class="dash-block accent"></div>
+            </div>
+            <div class="dash-row">
+              <div class="dash-block" style="height:20px; flex:0.4; background:rgba(255,255,255,0.06)"></div>
+              <div class="dash-block" style="height:20px; flex:1; background:rgba(255,255,255,0.04)"></div>
+            </div>
+            <div class="dash-chart">
+              <div class="dash-bar" style="height:40%"></div>
+              <div class="dash-bar" style="height:65%"></div>
+              <div class="dash-bar" style="height:45%"></div>
+              <div class="dash-bar" style="height:80%"></div>
+              <div class="dash-bar" style="height:55%; background:rgba(62,207,142,0.4)"></div>
+              <div class="dash-bar" style="height:90%; background:rgba(62,207,142,0.4)"></div>
+              <div class="dash-bar" style="height:70%"></div>
+              <div class="dash-bar" style="height:100%; background:rgba(124,109,250,0.6)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog card -->
+    <div class="bento-card">
+      <div class="bento-label">Blogging</div>
+      <div class="bento-title">Write and publish your thoughts</div>
+      <div class="bento-desc">Built-in blog, like Medium but on your portfolio.</div>
+      <div class="bento-visual">
+        <div class="blog-post">
+          <div class="blog-post-title">How I built my first SaaS in 30 days</div>
+          <div class="blog-post-meta">5 min read · React · Firebase</div>
+          <div class="blog-post-line"></div>
+          <div class="blog-post-line short"></div>
+        </div>
+        <div class="blog-post" style="opacity:0.6">
+          <div class="blog-post-title">Understanding Async/Await deeply</div>
+          <div class="blog-post-meta">8 min read · JavaScript</div>
+          <div class="blog-post-line"></div>
+          <div class="blog-post-line short"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects card -->
+    <div class="bento-card">
+      <div class="bento-label">Projects</div>
+      <div class="bento-title">Showcase your best work</div>
+      <div class="bento-desc">Add projects with images, tech stack, and live links.</div>
+      <div class="bento-visual">
+        <div class="proj-card-mini">
+          <div class="proj-icon" style="background: linear-gradient(135deg,#7c6dfa,#9d8ffa)"></div>
+          <div class="proj-info">
+            <div class="proj-name">E-commerce Platform</div>
+            <div class="proj-tech">React · Node · Stripe</div>
+          </div>
+          <div class="proj-stars">★ 4.9</div>
+        </div>
+        <div class="proj-card-mini">
+          <div class="proj-icon" style="background: linear-gradient(135deg,#3ecf8e,#2ab87a)"></div>
+          <div class="proj-info">
+            <div class="proj-name">AI Resume Builder</div>
+            <div class="proj-tech">Python · GPT-4 · FastAPI</div>
+          </div>
+          <div class="proj-stars">★ 4.7</div>
+        </div>
+        <div class="proj-card-mini" style="opacity:0.5">
+          <div class="proj-icon" style="background: linear-gradient(135deg,#e8645a,#f0877e)"></div>
+          <div class="proj-info">
+            <div class="proj-name">Dev Portfolio Builder</div>
+            <div class="proj-tech">Next.js · Firebase</div>
+          </div>
+          <div class="proj-stars">★ 5.0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- URL card -->
+    <div class="bento-card" style="background: linear-gradient(135deg, rgba(124,109,250,0.1), rgba(62,207,142,0.06)); border-color: rgba(124,109,250,0.2);">
+      <div class="bento-label">Your URL</div>
+      <div class="bento-title">Your own corner of the internet</div>
+      <div class="bento-desc">Every user gets a unique, shareable URL at /u/yourname</div>
+      <div class="bento-visual">
+        <div style="background: var(--bg); border-radius:10px; padding: 14px 16px; display:flex; align-items:center; gap:10px; border: 1px solid var(--border);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent3)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          <span style="font-size:13px; color: var(--text2);">devfolio.app/u/<span style="color:var(--accent3); font-weight:600;">yourname</span></span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2" style="margin-left:auto"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </div>
+        <div style="margin-top: 12px; font-size:12px; color:var(--text3);">Share on LinkedIn, Twitter, email — anywhere.</div>
+      </div>
+    </div>
+
+    <!-- Cloudinary/Firebase card -->
+    <div class="bento-card">
+      <div class="bento-label">Powered by</div>
+      <div class="bento-title">Firebase + Cloudinary backend</div>
+      <div class="bento-desc">Real-time updates. Fast image delivery. Always online.</div>
+      <div class="bento-visual" style="display:flex; gap:10px; margin-top:16px;">
+        <div style="flex:1; background:rgba(255,167,38,0.1); border:1px solid rgba(255,167,38,0.2); border-radius:10px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; color:#ffa726; margin-bottom:4px;">Firebase</div>
+          <div style="font-size:10px; color:var(--text3);">Real-time DB</div>
+        </div>
+        <div style="flex:1; background:rgba(62,207,142,0.1); border:1px solid rgba(62,207,142,0.2); border-radius:10px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; color:#3ecf8e; margin-bottom:4px;">Cloudinary</div>
+          <div style="font-size:10px; color:var(--text3);">Media CDN</div>
+        </div>
+        <div style="flex:1; background:rgba(124,109,250,0.1); border:1px solid rgba(124,109,250,0.2); border-radius:10px; padding:12px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; color:#7c6dfa; margin-bottom:4px;">Vercel</div>
+          <div style="font-size:10px; color:var(--text3);">Global CDN</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTFOLIO EXPLORER -->
+<section id="explorer">
+  <div style="text-align:center; max-width:640px; margin: 0 auto;">
+    <div class="section-label reveal">Live portfolios</div>
+    <h2 class="section-title reveal reveal-delay1">See what others built</h2>
+    <p class="section-sub reveal reveal-delay2" style="margin: 0 auto;">Real developers. Real portfolios. Created on this platform and live right now.</p>
+  </div>
+
+  <div class="explorer-grid reveal">
+
+    <div class="explore-card">
+      <div class="explore-header" style="background: linear-gradient(135deg, #1a1628, #2d2060);">
+        <div class="explore-avatar" style="background: linear-gradient(135deg, #7c6dfa, #9d8ffa);">AM</div>
+      </div>
+      <div class="explore-body">
+        <div class="explore-name">Ahmed Malik</div>
+        <div class="explore-role">Full Stack Developer</div>
+        <div class="explore-bio">Building scalable web apps. Open to remote opportunities.</div>
+        <div class="explore-tags">
+          <span class="explore-tag">React</span><span class="explore-tag">Node.js</span><span class="explore-tag">Firebase</span><span class="explore-tag">TypeScript</span>
+        </div>
+        <div class="explore-footer">
+          <div class="explore-stat"><strong>12</strong> projects · <strong>8</strong> blogs</div>
+          <div class="explore-link">View portfolio →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explore-card">
+      <div class="explore-header" style="background: linear-gradient(135deg, #0e2820, #124e38);">
+        <div class="explore-avatar" style="background: linear-gradient(135deg, #3ecf8e, #2ab87a);">SR</div>
+      </div>
+      <div class="explore-body">
+        <div class="explore-name">Sara Rehman</div>
+        <div class="explore-role">UI/UX Designer</div>
+        <div class="explore-bio">Creating user-centered digital experiences that convert.</div>
+        <div class="explore-tags">
+          <span class="explore-tag">Figma</span><span class="explore-tag">Prototyping</span><span class="explore-tag">Webflow</span>
+        </div>
+        <div class="explore-footer">
+          <div class="explore-stat"><strong>9</strong> projects · <strong>5</strong> blogs</div>
+          <div class="explore-link">View portfolio →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explore-card">
+      <div class="explore-header" style="background: linear-gradient(135deg, #281410, #4e2018);">
+        <div class="explore-avatar" style="background: linear-gradient(135deg, #e8645a, #f0877e);">ZK</div>
+      </div>
+      <div class="explore-body">
+        <div class="explore-name">Zaid Khan</div>
+        <div class="explore-role">Backend Engineer</div>
+        <div class="explore-bio">Python specialist. I build APIs that don't break at 2am.</div>
+        <div class="explore-tags">
+          <span class="explore-tag">Python</span><span class="explore-tag">Django</span><span class="explore-tag">AWS</span><span class="explore-tag">Docker</span>
+        </div>
+        <div class="explore-footer">
+          <div class="explore-stat"><strong>18</strong> projects · <strong>11</strong> blogs</div>
+          <div class="explore-link">View portfolio →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explore-card">
+      <div class="explore-header" style="background: linear-gradient(135deg, #271e06, #4d3a0c);">
+        <div class="explore-avatar" style="background: linear-gradient(135deg, #f0a328, #fabd5a);">NF</div>
+      </div>
+      <div class="explore-body">
+        <div class="explore-name">Nadia Farooq</div>
+        <div class="explore-role">Frontend Developer</div>
+        <div class="explore-bio">Vue.js & animation enthusiast. I make UIs that feel alive.</div>
+        <div class="explore-tags">
+          <span class="explore-tag">Vue.js</span><span class="explore-tag">GSAP</span><span class="explore-tag">Tailwind</span>
+        </div>
+        <div class="explore-footer">
+          <div class="explore-stat"><strong>7</strong> projects · <strong>14</strong> blogs</div>
+          <div class="explore-link">View portfolio →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explore-card">
+      <div class="explore-header" style="background: linear-gradient(135deg, #0e1a28, #12304e);">
+        <div class="explore-avatar" style="background: linear-gradient(135deg, #378add, #6aaff0);">OA</div>
+      </div>
+      <div class="explore-body">
+        <div class="explore-name">Omar Aslam</div>
+        <div class="explore-role">DevOps Engineer</div>
+        <div class="explore-bio">Kubernetes, CI/CD, and infra automation. Cloud native mindset.</div>
+        <div class="explore-tags">
+          <span class="explore-tag">Kubernetes</span><span class="explore-tag">Terraform</span><span class="explore-tag">GCP</span>
+        </div>
+        <div class="explore-footer">
+          <div class="explore-stat"><strong>15</strong> projects · <strong>6</strong> blogs</div>
+          <div class="explore-link">View portfolio →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="explore-card" style="border-color: rgba(124,109,250,0.3); background: rgba(124,109,250,0.04);">
+      <div class="explore-header" style="background: linear-gradient(135deg, #16121f, #2a2040); display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-size:28px; margin-bottom:4px;">+</div>
+          <div style="font-size:12px; color:var(--accent);">Your portfolio here</div>
+        </div>
+      </div>
+      <div class="explore-body">
+        <div class="explore-name" style="color:var(--accent)">You, next</div>
+        <div class="explore-role">Your Role · Your City</div>
+        <div class="explore-bio">Create your portfolio in minutes and join these developers.</div>
+        <div class="explore-tags">
+          <span class="explore-tag" style="border:1px dashed var(--border2)">Your stack</span>
+        </div>
+        <div class="explore-footer">
+          <a href="#cta" class="btn-primary" style="font-size:12px; padding: 8px 16px;">Create yours — free</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BLOG SECTION -->
+<section id="blog">
+  <div class="blog-layout">
+    <div>
+      <div class="section-label reveal">Blogging</div>
+      <h2 class="section-title reveal reveal-delay1">Write. Publish. Be heard.</h2>
+      <p class="section-sub reveal reveal-delay2">Your portfolio shouldn't just show what you built — it should share how you think. Our built-in blog puts your writing right next to your work.</p>
+      <div class="blog-features reveal reveal-delay2">
+        <div class="blog-feat">
+          <div class="blog-feat-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div class="blog-feat-text">
+            <h4>Rich text editor</h4>
+            <p>Write with formatting, code blocks, and images. No markdown knowledge needed.</p>
+          </div>
+        </div>
+        <div class="blog-feat">
+          <div class="blog-feat-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div class="blog-feat-text">
+            <h4>Public on your portfolio</h4>
+            <p>Blogs appear on your /u/yourname page — same URL, no separate domain.</p>
+          </div>
+        </div>
+        <div class="blog-feat">
+          <div class="blog-feat-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3ecf8e" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="blog-feat-text">
+            <h4>Lazy-loaded for performance</h4>
+            <p>Blog section loads only when visited. Portfolio stays lightning fast.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal reveal-delay1">
+      <div class="blog-mockup">
+        <div class="blog-mock-bar">
+          <div class="mock-dot" style="background:#e8645a"></div>
+          <div class="mock-dot" style="background:#f0a328"></div>
+          <div class="mock-dot" style="background:#3ecf8e"></div>
+          <span style="font-size:10px; color:var(--text3); margin-left:8px;">devfolio.app/u/zaidk/blog/async-await</span>
+        </div>
+        <div class="blog-mock-body">
+          <div class="blog-mock-tag">JavaScript</div>
+          <div class="blog-mock-title">Understanding Async/Await at a deep level</div>
+          <div class="blog-mock-author">
+            <div class="blog-mock-av">ZK</div>
+            <div class="blog-mock-meta">Zaid Khan · 8 min read · May 2025</div>
+          </div>
+          <div class="blog-mock-line"></div>
+          <div class="blog-mock-line"></div>
+          <div class="blog-mock-line short"></div>
+          <div class="blog-mock-code">async function fetchUser(id) {<br>&nbsp;&nbsp;const user = await db.get(id);<br>&nbsp;&nbsp;return user;<br>}</div>
+          <div class="blog-mock-line"></div>
+          <div class="blog-mock-line short"></div>
+          <div style="display:flex; gap:8px; margin-top:14px;">
+            <span style="font-size:11px; padding:3px 10px; background:rgba(124,109,250,0.1); color:var(--accent); border-radius:20px;">JavaScript</span>
+            <span style="font-size:11px; padding:3px 10px; background:rgba(62,207,142,0.1); color:#3ecf8e; border-radius:20px;">Async</span>
+            <span style="font-size:11px; padding:3px 10px; background:rgba(255,255,255,0.06); color:var(--text2); border-radius:20px;">Web Dev</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div style="text-align:center; max-width:640px; margin: 0 auto;">
+    <div class="section-label reveal">Roadmap</div>
+    <h2 class="section-title reveal reveal-delay1">We're just getting started</h2>
+    <p class="section-sub reveal reveal-delay2" style="margin: 0 auto;">The platform is growing. Here's what's live, what's coming, and what's on the horizon.</p>
+  </div>
+
+  <div class="roadmap-grid reveal">
+    <div class="road-col">
+      <div class="road-col-title" style="color:var(--accent3);">✓ Live now</div>
+      <div class="road-item">
+        <div class="road-badge road-live">Live</div>
+        <div class="road-item-title">Google OAuth sign-in</div>
+        <div class="road-item-desc">One-click account creation</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-live">Live</div>
+        <div class="road-item-title">Portfolio dashboard</div>
+        <div class="road-item-desc">Manage all your content</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-live">Live</div>
+        <div class="road-item-title">Blog publishing</div>
+        <div class="road-item-desc">Write and publish articles</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-live">Live</div>
+        <div class="road-item-title">Projects showcase</div>
+        <div class="road-item-desc">Add projects with tech stack</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-live">Live</div>
+        <div class="road-item-title">Multi-tenant URLs</div>
+        <div class="road-item-desc">/u/yourname for everyone</div>
+      </div>
+    </div>
+
+    <div class="road-col">
+      <div class="road-col-title" style="color: #9d8ffa;">⏳ Coming soon</div>
+      <div class="road-item">
+        <div class="road-badge road-soon">Soon</div>
+        <div class="road-item-title">Custom domains</div>
+        <div class="road-item-desc">Connect yourname.dev</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-soon">Soon</div>
+        <div class="road-item-title">Portfolio analytics</div>
+        <div class="road-item-desc">See who's viewing your work</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-soon">Soon</div>
+        <div class="road-item-title">Theme customization</div>
+        <div class="road-item-desc">Pick colors, fonts, layouts</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-soon">Soon</div>
+        <div class="road-item-title">Resume/CV export</div>
+        <div class="road-item-desc">Download as styled PDF</div>
+      </div>
+    </div>
+
+    <div class="road-col">
+      <div class="road-col-title" style="color: var(--accent2);">🔭 On the horizon</div>
+      <div class="road-item">
+        <div class="road-badge road-future">Planned</div>
+        <div class="road-item-title">GitHub code reviews</div>
+        <div class="road-item-desc">AI-powered repo analysis</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-future">Planned</div>
+        <div class="road-item-title">Developer roadmaps</div>
+        <div class="road-item-desc">Visualize your learning path</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-future">Planned</div>
+        <div class="road-item-title">Collaboration spaces</div>
+        <div class="road-item-desc">Team portfolios for agencies</div>
+      </div>
+      <div class="road-item">
+        <div class="road-badge road-future">Planned</div>
+        <div class="road-item-title">Job board integration</div>
+        <div class="road-item-desc">Apply directly from portfolio</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare">
+  <div style="text-align:center; max-width:640px; margin: 0 auto;">
+    <div class="section-label reveal">Why DevFolio</div>
+    <h2 class="section-title reveal reveal-delay1">Why not just use GitHub?</h2>
+    <p class="section-sub reveal reveal-delay2" style="margin: 0 auto;">Because code repos aren't portfolios. Here's what you actually get on each platform.</p>
+  </div>
+
+  <div class="compare-table-wrap reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>GitHub</th>
+          <th>LinkedIn</th>
+          <th>Notion</th>
+          <th>Read.cv</th>
+          <th class="highlight col-highlight">DevFolio ✦</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feature-name">Beautiful portfolio page</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="col-highlight"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Built-in blogging</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="col-highlight"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Project showcase</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="partial">Partial</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="col-highlight"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Content dashboard</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="col-highlight"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Google sign-in onboarding</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td class="col-highlight"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Shareable /u/yourname URL</td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="col-highlight"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Designed for developers</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="col-highlight"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td class="feature-name">Free to use</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Limited</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="col-highlight"><span class="check">✓</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <div class="section-label reveal" style="justify-content:center; display:flex;">Ready?</div>
+  <h2 class="cta-title reveal reveal-delay1">Your work deserves<br><span style="color:var(--accent)">its own space.</span></h2>
+  <p class="cta-sub reveal reveal-delay2">Join hundreds of developers who launched their presence in minutes.</p>
+  <div class="reveal reveal-delay2">
+    <a href="#" class="btn-primary" style="font-size:17px; padding:16px 36px; margin: 0 auto; display:inline-flex;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Create your portfolio — free
+    </a>
+  </div>
+  <div class="cta-trust reveal reveal-delay3">
+    <span>Free forever</span>
+    <span>No credit card</span>
+    <span>Ready in 2 minutes</span>
+    <span>Your own URL</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dev<span>Folio</span></div>
+  <div class="footer-links">
+    <a href="#how">How it works</a>
+    <a href="#explorer">Browse</a>
+    <a href="#blog">Blog</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#">GitHub</a>
+    <a href="#">Built by you →</a>
+  </div>
+  <div class="footer-credit">© 2025 DevFolio · Free for everyone</div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Counter animation
+const counters = document.querySelectorAll('.counter-num');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current).toLocaleString();
+      }, 16);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterObserver.observe(c));
+
+// Bento card glow on hover
+document.querySelectorAll('.bento-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    card.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(124,109,250,0.08), var(--bg3) 60%)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.background = '';
+  });
+});
+</script>
+</body>
+</html>
